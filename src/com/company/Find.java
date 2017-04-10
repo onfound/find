@@ -14,14 +14,13 @@ class Find {
         if (directory == null) directory = System.getProperty("user.dir");
         StringBuilder path = new StringBuilder(directory + "\\" + fileName);
         if (subDirectory) {
-            pathList = directory.split("\\\\");
-            for (int i = 0; i < pathList.length - 1; i++) {
+            for (int i = 0; i < directory.split("\\\\").length - 1; i++) {
                 if (new File(path.toString()).exists()) {
                     return "File is found in subdirectory: " + path;
                 }
                 path.deleteCharAt(path.lastIndexOf("\\")).delete(path.lastIndexOf("\\"), path.length()).append("\\").append(fileName);
             }
-            return "FIle is not found";
+            return "File is not found";
         } else {
             if (new File(path.toString()).exists()) return "File is found";
             else return "File is not found";
