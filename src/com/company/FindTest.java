@@ -12,13 +12,13 @@ public class FindTest {
 
     @Test
     public void find() throws IOException {
-        assertEquals("File is found", file2.find("testFile1.txt", System.getProperty("user.dir")));
-        assertEquals("File is not found", file2.find("NotExistFile.txt", System.getProperty("user.dir")));
+        assertEquals("File is found", file1.find("testFile2.txt", System.getProperty("user.dir")));
+        assertEquals("File is not found", file1.find(".txt", System.getProperty("user.dir")));
         assertEquals("File is not found",
                 file2.find("testFile1.txt", System.getProperty("user.dir") + "\\directory1"));
-        assertEquals("File is found in subdirectory: " + System.getProperty("user.dir") + "\\testFile1.txt",
+        assertEquals("File is found",
                 file1.find("testFile1.txt", System.getProperty("user.dir") + "\\directory1"));
-        assertEquals("File is found in subdirectory: " + System.getProperty("user.dir") + "\\directory1\\directory2\\testFile2",
+        assertEquals("File is found",
                 file1.find("testFile2", System.getProperty("user.dir") + "\\directory1\\directory2"));
         assertEquals("File is not found",
                 file1.find("testFile3.txt", System.getProperty("user.dir") + "\\directory1\\testFile3"));
