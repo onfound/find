@@ -17,7 +17,7 @@ class Find {
                 if (new File(path.toString()).exists()) {
                     return "File is found in subdirectory: " + path;
                 }
-                path.deleteCharAt(path.lastIndexOf("\\")).delete(path.lastIndexOf("\\")+1, path.length()).append(fileName);
+                path.deleteCharAt(path.lastIndexOf("\\")).delete(path.lastIndexOf("\\")+1, path.length()-fileName.length());
             }
             return "File is not found";
         } else {
