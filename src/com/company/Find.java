@@ -10,7 +10,6 @@ class Find {
     }
 
     String find(String fileName, String directory) throws IOException {
-        String[] pathList;
         if (directory == null) directory = System.getProperty("user.dir");
         StringBuilder path = new StringBuilder(directory + "\\" + fileName);
         if (subDirectory) {
@@ -18,7 +17,7 @@ class Find {
                 if (new File(path.toString()).exists()) {
                     return "File is found in subdirectory: " + path;
                 }
-                path.deleteCharAt(path.lastIndexOf("\\")).delete(path.lastIndexOf("\\"), path.length()).append("\\").append(fileName);
+                path.deleteCharAt(path.lastIndexOf("\\")).delete(path.lastIndexOf("\\")+1, path.length()).append(fileName);
             }
             return "File is not found";
         } else {
