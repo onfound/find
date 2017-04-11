@@ -19,10 +19,9 @@ class Find {
                 }
                 path.deleteCharAt(path.lastIndexOf("\\")).delete(path.lastIndexOf("\\")+1, path.length()-fileName.length());
             }
-            return "File is not found";
         } else {
             if (new File(path.toString()).exists()) return "File is found";
-            else return "File is not found";
         }
+        return "File is not found";
     }
 }
