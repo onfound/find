@@ -2,31 +2,35 @@ package com.company;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Objects;
 
 class Find {
     final private Boolean subDirectory;
-    final private ArrayList<File> listWithFileNames = new ArrayList<>();
+    final private ArrayList<File> filesList = new ArrayList<>();
+
     Find(Boolean subDirectory) {
         this.subDirectory = subDirectory;
     }
 
-    String find(String fileName, String directory)throws IOException{
+    Boolean find(String directory, String fileName) throws IOException {
         if (directory == null) directory = System.getProperty("user.dir");
-        if (subDirectory){
-            getListFiles(directory);
-            if (listWithFileNames.contains(new File(fileName))) return "File is found";
+        getListFiles(directory);
+        for (File fil : filesList) {
+            if (Objects.equals(fileName, fil.getName())) return true;
         }
-        else if (new File(directory + "\\" + fileName).exists()) return "File is found";
-        return "File is not found";
+        return false;
     }
 
-    private void getListFiles(String str) {
-        File f = new File(str);
-        for (File s : f.listFiles()) {
-            if (s.isFile()) {
-                listWithFileNames.add(s);
-            } else if (s.isDirectory()) {
-                getListFiles(s.getAbsolutePath());
+    private void getListFiles(String directory) {
+        File f = new File(directory);
+        if (f.listFiles() != null) {
+            for (File fs : f.listFiles()) {
+                if (fs.isFile()) {
+                    filesList.add(fs);
+                }
+                if (subDirectory && fs.isDirectory()) {
+                    getListFiles(fs.getAbsolutePath());
+                }
             }
         }
     }

@@ -1,9 +1,9 @@
 package com.company;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import org.kohsuke.args4j.*;
 
 import java.io.IOException;
-
 
 public class FindLauncher {
 
@@ -34,11 +34,10 @@ public class FindLauncher {
 
         Find finder = new Find(subDirectcory);
         try {
-            String result = finder.find(fileName, directory);
-            System.out.println(result);
+            if (finder.find(directory,fileName)) System.out.println("File is found");
+            else System.out.println("File is not found");
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
-
     }
 }

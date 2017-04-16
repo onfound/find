@@ -7,20 +7,19 @@ import java.io.IOException;
 import static org.junit.Assert.*;
 
 public class FindTest {
-    Find file1 = new Find(true);
-    Find file2 = new Find(false);
-
+    private Find file1 = new Find(true);
+    private Find file2 = new Find(true);
+    private Find file3 = new Find(true);
+    private Find file4 = new Find(true);
+    private Find file5 = new Find(false);
+    private Find file6 = new Find(false);
     @Test
     public void find() throws IOException {
-        assertEquals("File is found", file1.find("testFile2.txt", System.getProperty("user.dir")));
-        assertEquals("File is not found", file1.find(".txt", System.getProperty("user.dir")));
-        assertEquals("File is not found",
-                file2.find("testFile1.txt", System.getProperty("user.dir") + "\\directory1"));
-        assertEquals("File is found",
-                file1.find("testFile1.txt", System.getProperty("user.dir") + "\\directory1"));
-        assertEquals("File is found",
-                file1.find("testFile2", System.getProperty("user.dir") + "\\directory1\\directory2"));
-        assertEquals("File is not found",
-                file1.find("testFile3.txt", System.getProperty("user.dir") + "\\directory1\\testFile3"));
+        assertTrue( file1.find(System.getProperty("user.dir"),"testFile2.txt"));
+        assertFalse(file2.find(System.getProperty("user.dir"),"testFile5.txt"));
+        assertTrue(file5.find(System.getProperty("user.dir"),"testFile1.txt"));
+        assertTrue(file3.find(System.getProperty("user.dir") + "\\directory1", "testFile2.txt"));
+        assertFalse(file4.find(System.getProperty("user.dir") + "\\directory1\\directory2", "testFile3.txt"));
+        assertFalse(file6.find(System.getProperty("user.dir") + "\\directory1", "testFile4.txt"));
     }
 }
