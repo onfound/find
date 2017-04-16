@@ -1,10 +1,7 @@
 package com.company;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
 import org.kohsuke.args4j.*;
-
 import java.io.IOException;
-
 public class FindLauncher {
 
     @Option(name = "-r", metaVar = "SubDirect", usage = "Find Subdirectory")
