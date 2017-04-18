@@ -1,7 +1,9 @@
 package com.company;
 
 import org.kohsuke.args4j.*;
+
 import java.io.IOException;
+
 public class FindLauncher {
 
     @Option(name = "-r", metaVar = "SubDirect", usage = "Find Subdirectory")
@@ -29,9 +31,9 @@ public class FindLauncher {
             return;
         }
 
-        Find finder = new Find(subDirectcory);
+        Find finder = new Find(subDirectcory, fileName);
         try {
-            if (finder.find(directory,fileName)) System.out.println("File is found");
+            if (finder.find(directory)) System.out.println("File is found");
             else System.out.println("File is not found");
         } catch (IOException e) {
             System.err.println(e.getMessage());
