@@ -9,8 +9,8 @@ import static org.junit.Assert.*;
 public class FindTest {
     private Find file1 = new Find(true, "testFile2.txt");
     private Find file2 = new Find(true, "testFile5.txt");
-    private Find file3 = new Find(true, "testFile1.txt");
-    private Find file4 = new Find(true, "testFile2.txt");
+    private Find file3 = new Find(true, "testFile2.txt");
+    private Find file4 = new Find(true, "testFile3.txt");
     private Find file5 = new Find(false, "testFile3.txt");
     private Find file6 = new Find(false, "testFile4.txt");
 
